@@ -1,0 +1,58 @@
+{
+  "name": "gemini-desktop",
+  "title": "Gemini Desktop",
+  "version": "1.3.0",
+  "description": "Unofficial Web app for Google Gemini providing the desktop user experience you would expect on Ubuntu or any other Linux desktop.",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --publish never"
+  },
+  "build": {
+    "asar": false,
+    "linux": {
+      "target": [
+        "dir"
+      ],
+      "category": "Utility",
+      "artifactName": "${name}_${version}_linux.${ext}"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "artifactName": "${name}_${version}_win.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Gemini Desktop"
+    },
+    "extraFiles": [
+      "com.github.acierto-incomodo.${name}.desktop"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acierto-incomodo/gemini-desktop.git"
+  },
+  "author": "StormGamesStudios",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/acierto-incomodo/gemini-desktop/issues"
+  },
+  "homepage": "https://github.com/acierto-incomodo/gemini-desktop#readme",
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "electron-package": "^0.1.0"
+  }
+}
